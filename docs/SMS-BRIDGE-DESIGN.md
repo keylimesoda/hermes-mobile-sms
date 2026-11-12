@@ -47,11 +47,11 @@ New package `com.nousresearch.hermesmobile.sms`:
 1. `HermesApplication.kt` — one line: `com.nousresearch.hermesmobile.sms.SmsBridge.init(this)` at the end of `onCreate`.
 2. `HermesViewModel.kt` + `HermesMobileApp.kt` + `HermesDrawer.kt` — nav registration: add `MainSection.SMS` to the enum, one `DrawerItem` line, one `when` arm. ~3 lines, all additive.
 
-Manifest: SMS entries (`RECEIVE_SMS`, `SEND_SMS`, `READ_SMS`, receiver declaration) live in
-`app/src/sms/AndroidManifest.xml` under an **`sms` product flavor dimension** so upstream-style
-`debug`/`release` builds with the flavor off are byte-identical in permissions. (Check: upstream
-has no flavors today — we add a `legacy` no-op flavor so CI/flavor graph stays honest. If
-upstream ever adds flavors this is the one seam that may conflict; accept it.)
+Manifest: declare only the SMS permissions that the current feature needs (`SEND_SMS` for the
+sender; `RECEIVE_SMS` when the inbound receiver lands; `READ_SMS` only if the optional history
+reader is built). These are additive permission entries, not a new product-flavor dimension: a
+flavor would multiply build variants and break the upstream `assembleDebug`/CI task names. Runtime
+grant is requested only from the SMS setup flow, never at app launch.
 
 Strings: `values/strings_sms.xml` + `values-es/strings_sms.xml`, real names (`sms_*`) — the opaque
 key convention exists to protect generated files we never touch; new hand-written keys use plain
