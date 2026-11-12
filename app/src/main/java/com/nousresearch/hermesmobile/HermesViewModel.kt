@@ -35,7 +35,7 @@ import java.util.UUID
  * Capabilities, Messaging, Files, Cron, Memory); Settings ([MORE]) holds the rest, one page each.
  */
 enum class MainSection {
-    HOME, CHAT, BOTS, CAPABILITIES, MESSAGING, FILES, CRON, KANBAN, MEMORY,
+    HOME, CHAT, BOTS, CAPABILITIES, MESSAGING, SMS, FILES, CRON, KANBAN, MEMORY,
     MORE, MODELS, VOICE, SERVER_SETTINGS, PROVIDERS, GATEWAYS, SYSTEM, PROFILES, NOTIFICATIONS, APPEARANCE, ASSISTANT, ABOUT
 }
 
@@ -768,7 +768,7 @@ class HermesViewModel(application: Application) : AndroidViewModel(application),
             // Chats lists the scheduled jobs in its Routines section.
             MainSection.CHAT -> refreshCron()
             MainSection.SYSTEM, MainSection.MORE, MainSection.NOTIFICATIONS, MainSection.FILES, MainSection.MEMORY,
-            MainSection.MODELS, MainSection.VOICE, MainSection.SERVER_SETTINGS, MainSection.GATEWAYS,
+            MainSection.SMS, MainSection.MODELS, MainSection.VOICE, MainSection.SERVER_SETTINGS, MainSection.GATEWAYS,
             MainSection.APPEARANCE, MainSection.ASSISTANT, MainSection.ABOUT -> Unit
         }
     }

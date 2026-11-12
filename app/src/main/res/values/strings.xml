@@ -87,4 +87,17 @@
     <string name="routines_state_disabled">Off</string>
     <string name="routines_state_error">Failed</string>
     <string name="routines_delete_title">Delete this job?</string>
+    <string name="sms_title">SMS test</string>
+    <string name="sms_test_warning">This sends a real SMS from this phone and SIM. Your carrier may charge. Test only with a number you own or have permission to contact.</string>
+    <string name="sms_recipient">Recipient (international, e.g. +1 415 555 2671)</string>
+    <string name="sms_message">Message</string>
+    <string name="sms_allow_permission">Allow SMS permission</string>
+    <string name="sms_send_now">Send SMS</string>
+    <string name="sms_permission_denied">SMS permission is required. You can grant it in Android app settings.</string>
+    <string name="sms_invalid_recipient">Enter an international number beginning with + (up to 15 digits).</string>
+    <string name="sms_empty_message">Enter a message.</string>
+    <string name="sms_queued">Android accepted the SMS in %1$d part(s); carrier delivery is not confirmed.</string>
+    <string name="sms_unsupported_device">This device does not support telephony.</string>
+    <string name="sms_message_too_long">Message is too long to send.</string>
+    <string name="sms_send_failed">Android could not queue the SMS.</string>
 </resources>

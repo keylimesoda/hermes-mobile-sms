@@ -87,4 +87,17 @@
     <string name="routines_state_disabled">Desactivado</string>
     <string name="routines_state_error">Falló</string>
     <string name="routines_delete_title">¿Eliminar este trabajo?</string>
+    <string name="sms_title">Prueba de SMS</string>
+    <string name="sms_test_warning">Esto envía un SMS real desde este teléfono y SIM. Tu operador podría cobrarte. Prueba solo con un número tuyo o de alguien que te haya dado permiso.</string>
+    <string name="sms_recipient">Destinatario (internacional, p. ej., +1 415 555 2671)</string>
+    <string name="sms_message">Mensaje</string>
+    <string name="sms_allow_permission">Permitir SMS</string>
+    <string name="sms_send_now">Enviar SMS</string>
+    <string name="sms_permission_denied">Se requiere permiso para SMS. Puedes concederlo en los ajustes de la aplicación de Android.</string>
+    <string name="sms_invalid_recipient">Introduce un número internacional que empiece por + (hasta 15 dígitos).</string>
+    <string name="sms_empty_message">Escribe un mensaje.</string>
+    <string name="sms_queued">Android aceptó el SMS en %1$d parte(s); no se ha confirmado la entrega del operador.</string>
+    <string name="sms_unsupported_device">Este dispositivo no admite telefonía.</string>
+    <string name="sms_message_too_long">El mensaje es demasiado largo para enviarlo.</string>
+    <string name="sms_send_failed">Android no pudo poner el SMS en cola.</string>
 </resources>

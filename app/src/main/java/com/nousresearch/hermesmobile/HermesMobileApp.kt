@@ -288,6 +288,7 @@ fun HermesMobileApp(vm: HermesViewModel = viewModel()) {
                         onDismissWebhookReceipt = vm::dismissWebhookReceipt,
                         onRestartGateway = vm::restartMessagingGateway
                     )
+                    MainSection.SMS -> SmsTestScreen(onMenu = openDrawer)
                     MainSection.CAPABILITIES, MainSection.PROVIDERS -> CapabilitiesScreen(
                         providers = s.section == MainSection.PROVIDERS,
                         pluginsContent = {
@@ -626,6 +627,7 @@ internal fun sectionTitle(section: MainSection): Int = when (section) {
     MainSection.BOTS -> R.string.ui_f17c0acbd8
     MainSection.CAPABILITIES -> R.string.i18n_capabilities
     MainSection.MESSAGING -> R.string.i18n_messaging
+    MainSection.SMS -> R.string.sms_title
     MainSection.FILES -> R.string.a14_files
     MainSection.CRON -> R.string.ui_61b7bb44e2
     MainSection.KANBAN -> R.string.kanban_title

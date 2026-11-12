@@ -118,6 +118,7 @@ fun HermesDrawer(
             DrawerSection(stringResource(R.string.a21_agent))
             DrawerItem(Icons.Default.Psychology, stringResource(R.string.i18n_capabilities), current == MainSection.CAPABILITIES) { onClose(); onSelect(MainSection.CAPABILITIES) }
             DrawerItem(Icons.Default.Hub, stringResource(R.string.i18n_messaging), current == MainSection.MESSAGING) { onClose(); onSelect(MainSection.MESSAGING) }
+            DrawerItem(Icons.Default.Sms, stringResource(R.string.sms_title), current == MainSection.SMS) { onClose(); onSelect(MainSection.SMS) }
             DrawerItem(Icons.Default.FolderOpen, stringResource(R.string.a14_files), current == MainSection.FILES) { onClose(); onSelect(MainSection.FILES) }
             DrawerItem(Icons.Default.Schedule, stringResource(R.string.ui_61b7bb44e2), current == MainSection.CRON) { onClose(); onSelect(MainSection.CRON) }
             DrawerItem(Icons.Default.AutoAwesome, stringResource(R.string.a14_memory), current == MainSection.MEMORY) { onClose(); onSelect(MainSection.MEMORY) }
