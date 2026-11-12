@@ -8,17 +8,26 @@ permission gating. OpenClaw is pull-only (`sms.search`); inbound push is ours.
 
 ## Transport decision
 
+**Yes: the product architecture is the OpenClaw approach.** SMS is executed on the Android phone
+itself through native `SmsManager`/`ContentResolver`; the agent gets explicit SMS tools and requests
+work from the paired phone. We are not routing texts through sms-gate.app or a third-party cloud
+relay. OpenClaw's source is our reference for the phone-side manager, permission checks, query
+semantics, and command/tool boundary.
+
+The Hermes integration still needs a small gateway plugin: Hermes Mobile is currently a remote
+client, not an OpenClaw-style node that can advertise `sms.send` / `sms.search` directly to the
+agent. So `hermes-sms-bridge` is the *thin Hermes-side adapter* that exposes those tools, pairs a
+phone, queues outbound requests, and receives inbound events/status. The Android app polls/acks
+that queue over an authenticated direct connection. It does not implement SMS itself on the server.
+
 The existing push transport (`push/PushClient.kt` → `/p/<profile>/api/platforms/hermes_android/events`)
 has a **closed RPC allowlist** server-side (`hermes_android/adapter.py::_dispatch_http_event`):
-unknown `type` → 404. We do NOT bolt SMS onto it and fork the hermes-android-plugin. Instead the
-server side is a **new gateway plugin** (`hermes-sms-bridge`, Python, mirrors hermes-android-plugin's
-layout: adapter + store + tools + plugin.yaml) with its own platform name, own bearer secret, own
-endpoint. The phone app and the plugin speak a small versioned RPC, same envelope style:
+unknown `type` → 404. We do not extend or fork that plugin; the bridge has its own endpoint, RPC
+allowlist, and bearer secret. Use the same versioned envelope style:
 `{"ok":true,"protocol_version":1,"result":{...}}`.
 
-Why not reuse sms-gate.app (openclaw-sms-gateway's model)? That needs a third-party cloud relay
-plus a public webhook URL. Our phone already has an authenticated lane to the gateway; direct is
-simpler and keeps SMS on-LAN-capable (same `GatewayUrlPolicy` HTTPS-or-private rule).
+This is plugin + native-node execution, not a cloud SMS relay. It keeps texts on the device and
+works on a reachable private network using the app's existing HTTPS-or-private-host URL policy.
 
 ## Phone side (this repo)
 
